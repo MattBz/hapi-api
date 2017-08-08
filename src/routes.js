@@ -85,7 +85,6 @@ const routes = [
             auth: {
                 strategy: 'token',
             }
-
         },
         handler: ( request, reply ) => {
 
@@ -103,17 +102,13 @@ const routes = [
 
             } ).then( ( res ) => {
                 reply( {
-
                     data: guid,
                     message: 'successfully created bird'
                 } );
-
             } ).catch( ( err ) => {
                 reply( 'server-side error' );
             } );
-
         }
-
     },
 
     {
@@ -123,7 +118,6 @@ const routes = [
         config: {
             auth: {
                 strategy: 'token',
-
             },
 
             pre: [
@@ -143,7 +137,6 @@ const routes = [
                                     error: true,
                                     errMessage: `the bird with id ${ birdGuid } was not found`
                                 } ).takeover();
-
                             }
 
                             if( result.owner !== scope ) {
@@ -151,7 +144,6 @@ const routes = [
                                     error: true,
                                     errMessage: `the bird with id ${ birdGuid } is not in the current scope`
                                 } ).takeover();
-
                             }
 
                             return reply.continue();
@@ -160,8 +152,8 @@ const routes = [
                 }
             ],
         },
-        handler: ( request, reply ) => {
 
+        handler: ( request, reply ) => {
             const { birdGuid } = request.params
                 , { bird }     = request.payload;
 
